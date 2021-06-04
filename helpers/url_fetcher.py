@@ -9,7 +9,7 @@ gChromeOptions = webdriver.ChromeOptions()
 gChromeOptions.binary_location = os.getenviron.get("GOOGLE_CHROME_BIN")
 gChromeOptions.add_argument('--headless')
 gChromeOptions.add_argument('--no-sandbox')
-gChromeOptions.add_argument('--disable-dev-sh-usage')
+gChromeOptions.add_argument('--disable-gpu')
 #driver = webdriver.Chrome('D:/Downloads/Projects/chromedriver')
 driver = webdriver.Chrome(
     executable_path=os.getenviron.get("CHROMEDRIVER_PATH"),chrome_options=gChromeOptions
