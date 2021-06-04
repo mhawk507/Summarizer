@@ -4,7 +4,8 @@ import time
 from bs4.element import Tag
 from webdriver_manager.chrome import ChromeDriverManager
 gChromeOptions = webdriver.ChromeOptions()
-gChromeOptions.add_argument("disable-dev-shm-usage")
+gChromeOptions.add_argument('--disable-gpu')
+gChromeOptions.add_argument('--no-sandbox')
 #driver = webdriver.Chrome('D:/Downloads/Projects/chromedriver')
 driver = webdriver.Chrome(
     chrome_options=gChromeOptions, executable_path=ChromeDriverManager().install()
