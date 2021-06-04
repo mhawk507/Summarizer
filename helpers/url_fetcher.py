@@ -6,13 +6,13 @@ import time
 from bs4.element import Tag
 
 gChromeOptions = webdriver.ChromeOptions()
-gChromeOptions.binary_location = os.getenviron.get("GOOGLE_CHROME_BIN")
+gChromeOptions.binary_location = os.getenv("GOOGLE_CHROME_BIN")
 gChromeOptions.add_argument('--headless')
 gChromeOptions.add_argument('--no-sandbox')
 gChromeOptions.add_argument('--disable-gpu')
 #driver = webdriver.Chrome('D:/Downloads/Projects/chromedriver')
 driver = webdriver.Chrome(
-    executable_path=os.getenviron.get("CHROMEDRIVER_PATH"),chrome_options=gChromeOptions
+    executable_path=os.getenv("CHROMEDRIVER_PATH"),chrome_options=gChromeOptions
 )
 
 def fetch_url(query):
