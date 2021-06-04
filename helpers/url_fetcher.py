@@ -1,14 +1,18 @@
+import os
+
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
 from bs4.element import Tag
-from webdriver_manager.chrome import ChromeDriverManager
+
 gChromeOptions = webdriver.ChromeOptions()
-gChromeOptions.add_argument('--disable-gpu')
+gChromeOptions.binary_location = os.getenviron.get("GOOGLE_CHROME_BIN")
+gChromeOptions.add_argument('--headless')
 gChromeOptions.add_argument('--no-sandbox')
+gChromeOptions.add_argument('--disable-dev-sh-usage')
 #driver = webdriver.Chrome('D:/Downloads/Projects/chromedriver')
 driver = webdriver.Chrome(
-    chrome_options=gChromeOptions, executable_path=ChromeDriverManager().install()
+    executable_path=os.getenviron.get("CHROMEDRIVER_PATH"),chrome_options=gChromeOptions
 )
 
 def fetch_url(query):
