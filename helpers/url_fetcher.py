@@ -53,6 +53,22 @@ def fetch_url(query):
 
 def url_fetcher(query):
     data = fetch_url(query)
-    data[0] =list(dict.fromkeys(data[0]))
-    data[1] = list(dict.fromkeys(data[1]))
+    remove_data_0 = []
+    remove_data_1 = []
+    for i in data[1]:
+        if (not i.startswith('http')) or i.endswith('.pdf') or i.startswith('/'):
+            remove_data_1.append(i)
+            index = data[1].index(i)
+            print(index)
+            remove_data_0.append(data[0][index])
+
+    if len(remove_data_0) > 0:
+        for i in range(0, len(remove_data_0)):
+            data[0].remove(remove_data_0[i])
+            data[1].remove(remove_data_1[i])
+
+    res = dict(zip(data[0], data[1]))
+    data[0]=list(res.keys())
+    data[1]=list(res.values())
+
     return data
