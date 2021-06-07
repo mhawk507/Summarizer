@@ -2,8 +2,10 @@ from bs4 import BeautifulSoup
 import re
 import requests
 import heapq
+import nltk
 from nltk.tokenize import sent_tokenize,word_tokenize
 from nltk.corpus import stopwords as stpw
+
 
 def summarizer(url,num):
     #url = str(input("Paste the url"\n"))
