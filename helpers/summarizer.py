@@ -47,35 +47,37 @@ def summarizer(url,num):
                 word_frequency[word]=1
             else:
                 word_frequency[word] +=1
-    maximum_frequency = max(word_frequency.values())
-    #print(maximum_frequency)
-    for word in word_frequency.keys():
-        word_frequency[word] = (word_frequency[word]/maximum_frequency)
-    #print(word_frequency)
-    sentences_score = {}
-    for sentence in sent_tokens:
-        for word in word_tokenize(sentence):
-            if word in word_frequency.keys():
-                if (len(sentence.split(" "))) <30:
-                    if sentence not in sentences_score.keys():
-                        sentences_score[sentence] = word_frequency[word]
-                    else:
-                        sentences_score[sentence] += word_frequency[word]
-
-    #print(max(sentences_score.values()))
-    def get_key(val):
-        for key, value in sentences_score.items():
-            if val == value:
-                return key
     try:
+        maximum_frequency = max(word_frequency.values())
+        #print(maximum_frequency)
+        for word in word_frequency.keys():
+            word_frequency[word] = (word_frequency[word]/maximum_frequency)
+        #print(word_frequency)
+        sentences_score = {}
+        for sentence in sent_tokens:
+            for word in word_tokenize(sentence):
+                if word in word_frequency.keys():
+                    if (len(sentence.split(" "))) <30:
+                        if sentence not in sentences_score.keys():
+                            sentences_score[sentence] = word_frequency[word]
+                        else:
+                            sentences_score[sentence] += word_frequency[word]
+
+        #print(max(sentences_score.values()))
+        def get_key(val):
+            for key, value in sentences_score.items():
+                if val == value:
+                    return key
         key = get_key(max(sentences_score.values()))
         #print(key+"\n")
         #print(sentences_score)
         summary = heapq.nlargest(num,sentences_score,key=sentences_score.get)
         #print(" ".join(summary))
         summary = " ".join(summary)
+
+
     except:
-        summary="Note possible"
+        summary = "Summary not available"
     return summary
 
 def get_summary(server_urls,selected_url):
