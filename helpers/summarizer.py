@@ -6,6 +6,7 @@ import nltk
 from nltk.tokenize import sent_tokenize,word_tokenize
 from nltk.corpus import stopwords as stpw
 nltk.download('punkt')
+nltk.download('stopwords')
 
 def summarizer(url,num):
     #url = str(input("Paste the url"\n"))
